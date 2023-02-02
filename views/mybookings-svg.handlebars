@@ -1,0 +1,107 @@
+    <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script -->
+	<script src="/assets/js/3.4.1/bootstrap.min.js"></script>
+	
+	<style>
+		table, th, td {
+		  border: 1px solid #ddd;
+		}
+	</style>
+	</head>
+	
+	<div class="container mt-5 mb-5" style="position: relative; left:-1%; width: 45%;">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h4 style="text-align: center; font-weight:bold;">Vos rendez-vous à SHAA'M Beauty {{user.name}} / {{user.phonenumber}}</h4>
+        </div>
+
+        <div class="row" style="overflow-y: auto;">
+            <div class="col"  style="height:300px;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr style="color:#fff; background: slategray;">
+                            <th>Date de rendez-vous</th>
+                            <th>Heure de rendez-vous</th>
+                            <th>Modification</th>
+                            <th>Suppression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each myappointments}}
+                        <tr> 
+                            <td>{{this.date}}</td>
+                            <td>{{this.time}}</td>
+                            <td>
+                                <!-- a href="/updateBooking/{{this.id}}/{{this.phone}}/{{this.date}}/{{this.time}}"><i class="fa fa-edit" aria-hidden="true"></i></a -->
+								<!-- button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Modifier</button -->
+                                <a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit" aria-hidden="true"></i></a>
+							</td>
+							<td>
+                                <a href="/deleteBooking/{{this.id}}"
+                                    onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer ce rendez-vous ?');"><i
+                                        class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                            </td>
+                        </tr>
+						
+					    <!-- Modal -->
+					    <div class="modal fade" id="myModal" role="dialog" >
+						  <div  style="position:relative; left:38%; top:24%; width:60%;">
+						
+						  <!-- Modal content-->
+							<div class="container col-lg-4 col-md-6 col-sm-12 text-center position" style="background-color: #F5F5F5;">
+								<h3 style="color: #0000AA;" class="text-center">Modification de votre réservation pour une prestation</br> SHAA'M Beauty</h3><br>
+								<form action="/booking" method="POST">
+									<input type="hidden" name="userphone" value={{user.phonenumber}}>
+									<input type="hidden" name="username" value={{user.name}}>
+									<label>Date souhaitée de rendez-vous</label>
+									<div class="form-group">
+										<div class='input-group date' id='prefereddate'>
+											<input type='text' name="bookingdate" class="form-control" placeholder="Date souhaitée" value="{{this.date}}" required/>
+											<span class="input-group-addon">  
+												<span class ="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+										
+										<script>
+											$(function() {
+												$('#prefereddate').datetimepicker({format:'DD/MM/YYYY'});
+											});
+										</script>
+										
+									</div>
+
+									<label>Heure souhaitée de rendez-vous</label>
+									<div class="form-group">
+										<div class='input-group date' id='prefredtime'>
+											<input type='text' name="bookingtime" class="form-control" placeholder="Heure souhaitée" value="{{this.time}}" required/>
+											<span class="input-group-addon">  
+												<span class ="glyphicon glyphicon-time"></span>
+											</span>
+										</div>
+										
+										<script>
+											$(function() {
+												$('#prefredtime').datetimepicker({format:'HH:mm'});
+											});
+										</script>
+										
+									</div>
+									
+									<input type="submit" value="J'enregistre" class="btn btn-info btn-lg" style="margin: 5px; color:#000;">
+									<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Annuler</button>
+								</form>
+							</div>      
+						  </div>
+					    </div>
+						
+                        {{/each}}
+                    </tbody>
+                </table>
+				
+            </div>
+        </div>
+    </div>

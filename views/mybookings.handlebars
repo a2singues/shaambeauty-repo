@@ -1,0 +1,197 @@
+    <head>
+	
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="/assets/js/3.4.1/bootstrap.min.js"></script>
+
+	<style>
+		table, th, td {
+		  border: 1px solid #ddd;
+		}
+	</style>
+	</head>
+	
+	<div class="container mt-5 mb-5" style="position: relative; left:-1%; width: 49%;">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h4 style="text-align: center; font-weight:bold;">Vos rendez-vous à SHAA'M Beauty ({{user.name}} / {{user.phonenumber}})</h4>
+        </div>
+		
+		        <div class="row" style="overflow-y: auto;">
+            <div class="col"  style="height:300px;">
+                <table class="table table-striped" id="mybookings">
+                    <thead>
+                        <tr style="color:#fff; background: slategray;">
+                            <th>N° de rendez-vous</th>
+                            <th>Date de rendez-vous</th>
+                            <th>Heure de rendez-vous</th>
+                            <th>Modification</th>
+                            <th>Suppression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each myappointments}}
+                        <tr> 
+                            <td>{{this.id}}</td>
+                            <td>{{this.date}}</td>
+                            <td>{{this.time}}</td>
+                            <td>
+                                <!-- a href="/updateBooking/{{this.id}}/{{this.phone}}/{{this.date}}/{{this.time}}"><i class="fa fa-edit" aria-hidden="true"></i></a -->
+								<!-- button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Modifier</button -->
+                                <a href="" data-toggle="modal" data-target="#myEditModal"><i class="fas fa-edit" aria-hidden="true"></i></a>
+							</td>
+							<td>
+                                <!-- a href="/deleteBooking/{{this.id}}" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer ce rendez-vous ?');"><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a -->
+                                <a href="" data-toggle="modal" data-target="#myDeleteModal"><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                            </td>
+                        </tr>
+
+					    <!-- Modal edit -->
+					    <div class="modal fade" id="myEditModal" role="dialog" >
+						  <div  style="position:relative; left:38%; top:24%; width:60%;">
+						
+						  <!-- Modal content-->
+							<div class="container col-lg-4 col-md-6 col-sm-12 text-center position" style="background-color: #F5F5F5; padding:5px;">
+								<h3 style="color: #0000AA;" class="text-center">Modification de votre réservation pour une prestation</br> SHAA'M Beauty</h3><br>
+								<form class="editForm" action="/updateBooking" method="POST">
+									<input type="hidden" name="userphone" value="{{this.phone}}" />
+									<input type="hidden" name="username" value={{user.name}} />
+									<input type="hidden" id="bookingnum" name="bookingid" value="{{this.id}}" />
+									<label>Date souhaitée de rendez-vous au format JJ/MM/AAAA</label>
+									<div class="form-group">
+										<div class='input-group date' id='prefereddate'>
+											<input type='text' name="bookingdate" id="bookingdate" class="form-control" pattern="^\d{2}/\d{2}/\d{4}$" placeholder="Date souhaitée" value="{{this.date}}" required/>
+											<span class="input-group-addon">  
+												<span class ="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+										
+										<script>
+											$(function() {
+												$('#prefereddate').datetimepicker({format:'DD/MM/YYYY'});
+											});
+										</script>
+										
+									</div>
+
+									<label>Heure souhaitée de rendez-vous au format HH:MM:SS</label>
+									<div class="form-group">
+										<div class='input-group date' id='prefredtime'>
+											<input type='text' name="bookingtime" id="bookingtime" class="form-control" pattern="^\d{2}:\d{2}:\d{2}$" placeholder="Heure souhaitée" value="{{this.time}}" required />
+											<span class="input-group-addon">  
+												<span class ="glyphicon glyphicon-time"></span>
+											</span>
+										</div>
+										
+										<script>
+											$(function() {
+												$('#prefredtime').datetimepicker({format:'HH:mm:ss'});
+											});
+										</script>
+										
+									</div>
+									
+									<!-- a href="/updateBooking/{{this.id}}/{{this.phone}}/{{this.date}}/{{this.time}}" class="btn btn-info" style="color:#000" role="button">Je sauvegarde</a -->
+									<input type="submit" value="Je sauvegarde" class="btn btn-info" style="margin: 5px; color:#000;">
+									<button type="button" class="btn btn-warning" data-dismiss="modal" style="margin: 5px; color:#000;">Annuler</button>
+								</form>
+							</div>      
+						  </div>
+					    </div>
+
+					    <!-- Modal delete -->
+					    <div class="modal fade" id="myDeleteModal" role="dialog" >
+						  <div  style="position:relative; left:38%; top:24%; width:60%;">
+						
+						  <!-- Modal content-->
+							<div class="container col-lg-4 col-md-6 col-sm-12 text-center position" style="background-color: #F5F5F5; padding:5px;">
+								<h3 style="color: #0000AA;" class="text-center">Modification de votre réservation pour une prestation</br> SHAA'M Beauty</h3><br>
+								<!--form class="editForm" action="/updateBooking" method="POST" -->
+									<input type="hidden" name="userphone" value="{{this.phone}}" />
+									<input type="hidden" name="username" value={{user.name}} />
+									<input type="hidden" id="bookingnum" name="bookingid" value="{{this.id}}" />
+									<span>Etes-vous sûr(e) de vouloir supprimer la réservation du <input id="bookdate" style="width:78px; border:0;" disabled/> à <input id="booktime" style="width:63px; border:0;" disabled/></span>
+									
+									<hr>
+									<!-- input type="submit" value="Je supprime" class="btn btn-info btn-lg" style="margin: 5px; color:#000;" -->
+	                               <!-- a href="/deleteBooking/{{this.id}}" id="confirmDelete" class="btn btn-info btn-lg" style="margin: 5px; color:#000;">Je supprime</a -->
+	                               <a href="" id="confirmDelete" class="btn btn-info" style="margin: 5px; color:#000;">Je supprime</a>
+
+									<button type="button" class="btn btn-warning" style="margin: 5px; color:#000;" data-dismiss="modal">Annuler</button>
+
+								<!--/form -->
+							</div>      
+						  </div>
+					    </div>
+
+                        {{/each}}
+                    </tbody>
+                </table>
+				
+            </div>
+        </div>
+    </div>
+	
+	<script>
+	
+		$(document).ready(function() {
+		console.log("&& READY!!!");
+			$('#mybookings .fa-edit').on('click', function(event) {
+				event.preventDefault();
+				
+				var $row = $(this).closest("tr").find("td");
+
+				console.log("&& Booking ID="+JSON.stringify($row[0].textContent));
+				$('#bookingnum').val($row[0].textContent);
+				console.log("&& Booking Date="+JSON.stringify($row[1].textContent));
+				$('#bookingdate').val($row[1].textContent);
+				console.log("&& Booking Time="+JSON.stringify($row[2].textContent));
+				$('#bookingtime').val($row[2].textContent);
+
+				console.log("================== NUM="+$('#bookingnum').val());
+
+				var href = $(this).attr('href');
+				var text = $(this).text();
+
+			});
+
+			$('#mybookings .fa-trash').on('click', function(event) {
+				console.log("@@ CONFIRM SUPPR ...");
+				event.preventDefault();
+				
+				var $row = $(this).closest("tr").find("td");
+
+				console.log("&& Booking ID="+JSON.stringify($row[0].textContent));
+				$('#bookingnum').val($row[0].textContent);
+				console.log("&& Booking Date="+JSON.stringify($row[1].textContent));
+				$('#bookdate').val($row[1].textContent);
+				console.log("&& Booking Time="+JSON.stringify($row[2].textContent));
+				$('#booktime').val($row[2].textContent);
+
+				console.log("================== NUM="+$('#bookingnum').val());
+
+				console.log("## THIS="+JSON.stringify($(this)));
+
+				var href = $(this).attr('href');
+				var text = $(this).text();
+				console.log("## HREF-init="+href);
+				console.log("## TEXT="+text);
+				
+				$("a#confirmDelete").attr("href", "/deleteBooking/"+$('#bookingnum').val());
+				
+				//$(this).attr("href", "/deleteBooking/"+$('#bookingnum').val())
+				var newurl = $("a#confirmDelete").attr("href");
+				console.log("## HREF-upd="+newurl);
+				//$(this).click();
+
+			});
+
+			$('.table .delBtn').on('click', function(event) {
+				event.preventDefault();
+				var href = $(this).attr('href');
+				$('#myModal #delRef').attr('href', href);
+				$('#myModal').modal();
+			});
+
+		});
+	
+	</script>
+	

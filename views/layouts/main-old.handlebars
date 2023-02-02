@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<base href="" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <title>Meadowlark Travel</title>
+		{{#if showTests}}
+			<link rel="stylesheet" href="/vendor/mocha.css">
+		{{/if}}
+		{{{_sections.head}}}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" -->
+		<!-- link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" -->
+		<link rel="stylesheet" href="/ncss/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+
+		<!-- CSS here -->
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/css/gijgo.css">
+		<link rel="stylesheet" href="/assets/css/slicknav.css">
+		<link rel="stylesheet" href="/assets/css/animate.min.css">
+		<link rel="stylesheet" href="/assets/css/magnific-popup.css">
+		<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+		<link rel="stylesheet" href="/assets/css/themify-icons.css">
+		<link rel="stylesheet" href="/assets/css/slick.css">
+		<link rel="stylesheet" href="/assets/css/nice-select.css">
+		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="stylesheet" href="/assets/css/responsive.css">
+	
+		<link rel="stylesheet" href="/ncss/bootstrap.min.css">
+	
+	    <!--link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" -->
+		<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script -->
+		<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script -->
+ 
+		<!-- Include Moment.js CDN -->
+		<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script-->
+ 
+		<!-- Include Bootstrap DateTimePicker CDN -->
+		<!--link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"  rel="stylesheet" -->
+ 	<!---<link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css" -->
+
+		<!-- script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"> </script -->
+	<!--<script src="/njs/bootstrap-datetimepicker.js"> </script -->
+
+		<!--script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script -->
+	<!--<script src="../../njs/moment.min.js"></script -->
+
+        <script src="/vendor/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		
+		<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+		<!--script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		{{#if flash}}
+			 <div class="alert alert-dismissible alert-{{flash.type}}">
+				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+				 </button>
+				 <strong>{{flash.intro}}</strong> {{{flash.message}}}
+			 </div>
+		{{/if}}
+		
+	    <div>
+		    <header>
+				<!-- Header Start -->
+				<div class="header-area header-sticky" style="position: relative; top:5px; padding:0;margin:0;"">
+					<div class="main-header" style="position: relative; top:5px; padding:0;margin:0;">
+						<div class="container">
+							<div class="row align-items-center" style="position: relative: top:5px;">
+								<!-- logo -->
+								<div class="col-xl-2 col-lg-2">
+									<div class="logo">
+										<img src="/img/shaamBeauty.png" height="96" alt="SHAA'M Beauty Logo">
+										Menu: {{selectedmenu}}
+										User: {{user.name}}
+									</div>
+								</div>
+								<div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+									<!-- main-menu -->
+									<div class="main-menu">
+										<nav class="navbar navbar-default" style="background: red; height:80px;">
+											<ul id="navigation">
+												<li><a class="btn-warning" href="/home">Accueil</a></li>
+												{{#if 0 user=undefined}}
+												<!-- li><a style="height:32px; background-color: #FFE000; border-radius: 5px; padding:2px;margin:2px;" href="/login">Se connecter</a></li -->
+												<li><a class="active" href="/login">Se connecter</a></li>
+												
+												<li><a href="/createaccount">Créer un compte</a></li>
+												{{else}}
+												<li><a href="/booking">Réserver un créneau</a></li>
+												<li><a href="/booking">Mes rendez-vous</a></li>
+												<li><a href="/logout">Se déconnecter</a></li>
+												{{/if}}
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<!-- Mobile Menu -->
+								<div class="col-12">
+									<div class="mobile_menu d-block d-lg-none"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Header End -->
+			</header>
+	
+			<!-- Preloader Start -->
+			<div id="preloader-active">
+				<div class="preloader d-flex align-items-center justify-content-center">
+					<div class="preloader-inner position-relative">
+						<div class="preloader-circle"></div>
+						<div class="preloader-img pere-text">
+							<strong>SHAA'M Beauty</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{#if err}}
+				<p style="color:red;position: relative; left:35%; margin-top:20px;">{{err}}</p>
+			{{/if}}
+
+			{{#if msg}}
+				<p style="color:green;position: relative; left:35%; margin-top:20px;">{{msg}}</p>
+			{{/if}}
+			
+		    {{{body}}}
+			</div>
+			
+			<hr>
+
+			<footer>
+				<!-- Footer Start-->
+				<div class="footer-area black-bg">
+					<div class="container">
+						<div class="row d-flex justify-content-between">
+							<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+								<div class="single-footer-caption mb-30">
+									<!-- logo -->
+									<div class="footer-logo">
+										<a href="index.html"><img src="/img/AkwaProd-3.png" alt=""></a>
+									</div>
+									<div class="footer-social footer-social2">
+										<a href="#"><i class="fab fa-facebook-f"></i></a>
+										<a href="#"><i class="fab fa-twitter"></i></a>
+										<!--
+										<a href="#"><i class="fas fa-globe"></i></a>
+										<a href="#"><i class="fab fa-behance"></i></a>
+										-->
+									</div>
+									<div class="footer-pera">
+										<p>
+											<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+											Copyright &copy;
+											<script>document.write(new Date().getFullYear());</script> Tous droits réservés |
+											Anguiille Soft Systems&nbsp<i class="ti-heart" aria-hidden="true"></i>
+											<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
+								<div class="single-footer-caption mb-30">
+									<div class="footer-tittle">
+										<h4>Liens directs</h4>
+										<ul style="list-style-type:square;">
+											<li><a href="#">A propos de SHAA'M Beauty</a></li>
+											<li><a href="#">&#9632;&nbsp;Nos types de coiffures</a></li>
+											<li><a href="#">&#9632;&nbsp;Notre service d'onglerie</a></li>
+											<li><a href="#">&#9632;&nbsp;Nos produits de beauté et de soins</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+								<div class="single-footer-caption mb-30">
+									<div class="footer-tittle">
+										<h4>Réservations</h4>
+										<ul>
+											<li><a href="#">Tel: 06 45 21 67 90</a></li>
+											<li><a href="#">Skype: shaamBeauty</a></li>
+											<li><a href="#">shaambeauty@free.fr</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-4  col-sm-5">
+								<div class="single-footer-caption mb-30">
+									<div class="footer-tittle">
+										<h4>Contact</h4>
+										<ul>
+											<li><a href="#">Mme KAKOU Lou Charlotte</a></li>
+											<li><a href="#">Mme KEKE Marie</a></li>
+											<li>Tél: 06 45 21 67 90</li>
+										</ul>
+										<!-- Form -->
+										<div class="footer-form">
+											<div id="mc_embed_signup">
+												<form target="_blank"
+													action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+													method="get" class="subscribe_form relative mail_part">
+													<input type="email" name="email" id="newsletter-form-email"
+														placeholder="Adresse mail" class="placeholder hide-on-focus"
+														onfocus="this.placeholder = ''"
+														onblur="this.placeholder = ' Email Address '">
+													<div class="form-icon">
+														<button type="submit" name="submit" id="newsletter-submit"
+															class="email_icon newsletter-submit button-contactForm"><img
+																src="/assets/img/logo/form-iocn.jpg" alt=""></button>
+													</div>
+													<div class="mt-10 info"></div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Footer End-->
+				
+			</footer>
+	    </div> <!-- /container -->        
+
+        <!--script src="//code.jquery.com/jquery-2.1.1.min.js"></script -->
+		<!--
+        <script>window.jQuery || document.write('<script src="/vendor/js/jquery-2.1.1.min.js"><\/script>')</script>
+    	{{{_sections.jquery}}}
+
+		{{#if showTests}}
+			<div id="mocha"></div>
+			<script src="/vendor/mocha.js"></script>
+			<script src="/vendor/chai.js"></script>
+			<script>
+				mocha.ui('tdd');
+				var assert = chai.assert;
+			</script>
+			<script src="/qa/tests-global.js"></script>
+			{{#if pageTestScript}}
+				<script src="{{pageTestScript}}"></script>
+			{{/if}}
+			<script>mocha.run();</script>
+		{{/if}}
+
+        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+		-->
+		
+	    <!-- JS here -->
+
+		<!-- All JS Custom Plugins Link Here here -->
+		<script src="/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+
+		<!-- Jquery, Popper, Bootstrap 
+		<script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+		<script src="/assets/js/popper.min.js"></script>
+		<script src="/assets/js/bootstrap.min.js"></script -->
+		
+		<!-- Jquery Mobile Menu 
+		<script src="/assets/js/jquery.slicknav.min.js"></script -->
+		
+		<!-- Jquery Slick , Owl-Carousel Plugins --
+		<script src="/assets/js/owl.carousel.min.js"></script>
+		<script src="/assets/js/slick.min.js"></script -->
+		
+		<!-- Date Picker --
+		<script src="/assets/js/gijgo.min.js"></script>
+		
+		<!-- One Page, Animated-HeadLin --
+		<script src="/assets/js/wow.min.js"></script>
+		<script src="/assets/js/animated.headline.js"></script>
+		<script src="/assets/js/jquery.magnific-popup.js"></script -->
+
+		<!-- Scrollup, nice-select, sticky -->
+		<script src="/assets/js/jquery.scrollUp.min.js"></script>
+		<script src="/assets/js/jquery.nice-select.min.js"></script>
+		<script src="/assets/js/jquery.sticky.js"></script>
+
+		<!-- contact js -->
+		<script src="/assets/js/contact.js"></script>
+		<script src="/assets/js/jquery.form.js"></script>
+		<script src="/assets/js/jquery.validate.min.js"></script>
+		<script src="/assets/js/mail-script.js"></script>
+		<script src="/assets/js/jquery.ajaxchimp.min.js"></script>
+
+		<!-- Jquery Plugins, main Jquery -->
+		<script src="/assets/js/plugins.js"></script>
+		<script src="/assets/js/main.js"></script>
+    </body>
+</html>
+
+
+				<!-- Header Start -->
+				<div class="header-area header-sticky" style="position: relative; top:5px; padding:0;margin:0;"">
+					<div class="main-header" style="position: relative; top:5px; padding:0;margin:0;">
+						<div class="container">
+							<div class="row align-items-center" style="position: relative: top:5px;">
+								<!-- logo -->
+								<div class="col-xl-2 col-lg-2">
+									<div class="logo">
+										<img src="/img/shaamBeauty.png" height="96" alt="SHAA'M Beauty Logo">
+										Menu: #{{selectedmenu}}#
+										User: {{user}}
+									</div>
+								</div>
+								<div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+									<!-- main-menu -->
+									<div class="main-menu">
+										<navclass="navbar navbar-expand-lg bg-dark">
+											<ul id="navigation">
+												<li><a style="color:orange;" href="/home">Accueil</a></li>
+												{{#if 0 user=undefined}}
+												<!-- li><a style="height:32px; background-color: #FFE000; border-radius: 5px; padding:2px;margin:2px;" href="/login">Se connecter</a></li -->
+												<li><a class="active" href="/login">Se connecter</a></li>
+												
+												<li><a href="/createaccount">Créer un compte</a></li>
+												{{else}}
+												<li><a href="/booking">Réserver un créneau</a></li>
+												<li><a href="/booking">Mes rendez-vous</a></li>
+												<li><a href="/logout">Se déconnecter</a></li>
+												{{/if}}
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<!-- Mobile Menu -->
+								<div class="col-12">
+									<div class="mobile_menu d-block d-lg-none"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Header End -->

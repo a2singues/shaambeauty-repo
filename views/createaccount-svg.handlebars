@@ -1,0 +1,30 @@
+<div class="col-lg-4 col-md-6 col-sm-12 text-center position" style="position: relative; left:38%; width:20%; background-color: #F5F5F5; padding:5px; margin:5px;">
+	<form action="/createaccount" method="POST">
+		<h3 style="color: #0000AA;" class="text-center">S'inscrire sur</br>SHAA'M Beauty</h3><br>
+		<label>Nom d'utilisatrice, d'utilisateur (au moins 4 caractères)</label>
+		<input type="text" name="username" id="username" class="form-control" value="" placeholder="Nom utilisatrice/utilisateur" required>
+		<label>Votre numéro de téléphone</label>
+		<input type="text" name="phonenumber" class="form-control" pattern="^[(\+|00)]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" placeholder="Numéro téléphone" required>
+		<label>Mot de passe choisi</label>
+		<input type="password" name="pass" class="form-control" placeholder="Mot de passe" required>
+		<label>Confirmez votre mot de passe</label>
+		<input type="password" name="con_pass" class="form-control" placeholder="Mot de passe" required>
+		<span style="margin:3px;">
+			<input type="submit" value="J'enregistre" class="btn btn-info btn-lg mt-3">
+			<input id="resetForm" type="reset" class="btn btn-warning btn-lg mt-3" value="Tout effacer">
+		</span>
+		
+	</form>
+</div>
+	<!-- script -->
+	/*
+		$(document).ready(function() {
+		console.log("&& CREATE ACCOUNT FORM LOADED!!!");
+			event.preventDefault();
+			
+			//$('#username').val('');
+			
+			//$('form').reset();
+		});
+		*/
+	<!-- /script -->			

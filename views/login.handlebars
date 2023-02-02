@@ -1,0 +1,40 @@
+<div class="container mt-5 mb-5" style="position: relative; left:15%; width: 60%;">
+		<div class="col-lg-4 col-md-6 col-sm-12 text-center position" style="background-color: #ddd; padding:5px;">
+			<h3 style="color: #0000AA;" class="text-center">Connection à</br> SHAA'M Beauty</h3><br>
+			<form id="loginForm" action="/login" method="POST">
+				<label>Votre numéro de mobile</label>
+				<input type="text" id="userphone" name="phone" class="form-control"  value="" pattern="^((\+|00)[0-9]{2,3}[0-9]{1,2})*([0-9]{2}){4,5}$" placeholder="Numéro de mobile" required/>
+				<label>Votre mot de passe</label>
+				<input type="password" id="userpwd" name="pass" class="form-control" onready="this.value=''" pattern="^\w{3,20}$" placeholder="Mot de passe" required/>
+				<p><input type="checkbox"> Se souvenir de moi</p>
+				<input type="submit" value="Se connecter" class="btn btn-info">
+				<input id="resetForm" type="reset" class="btn btn-warning" value="Tout effacer">
+			</form>
+		</div>
+</div>
+	<script>
+		$(document).ready(function() {
+		console.log("&& LOGIN FORM LOADED!!!");
+			event.preventDefault();
+			
+			//$('#userphone').val('');
+			//$('#userpwd').val('');
+			//$("#userpwd").attr("value","")
+			//$('input[type="password"]#userpwd').val('');
+			
+			//setTimeout(function(){ $('#userpwd').val('');}, 500);
+			
+			//$("#resetForm").click();
+			
+			//document.getElementById("#loginForm").reset();
+			
+			//document.getElementById("resetForm").click();
+			
+			//$('form').trigger('reset');
+			
+			//setTimeout(function() {$('#userphone').val('yay it works now');}, 100);
+			
+			//$(this).form.reset();
+			//$('form').reset();
+		});
+	</script>
