@@ -1,13 +1,23 @@
 {
-  "name": "deployprj",
+  "name": "shaambeautyv1",
   "version": "1.0.0",
-  "description": "\"# node.js-repo\" \r Repository destiné à mes applications Node.js-repo",
-  "main": "index.js",
+  "description": "Site de Shaam Beauty version 1",
+  "main": "shaambeauty.js",
   "scripts": {
-	"start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "anguessan",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "bootstrap-datetimepicker": "^0.0.7",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "formidable": "^2.1.1",
+    "moment": "^2.29.4",
+    "mysql2": "^2.3.3",
+    "node-localstorage": "^2.2.1"
+  }
 }
